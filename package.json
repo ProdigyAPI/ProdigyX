@@ -14,7 +14,7 @@
     "license": "MIT",
     "dependencies": {
         "preact": "^10.5.7",
-        "react-icons": "^4.3.1",
+        "react-icons": "^4.4.0",
         "tw-elements": "^1.0.0-alpha12"
     },
     "devDependencies": {
