@@ -1,5 +1,7 @@
+import { h } from "preact"
+import { useState } from "preact/hooks"
 import { getMembership } from "../hack"
-import { InputTypes, success } from "../swal"
+import { ArgumentFailureError, customMessage, InputTypes, success } from "../swal"
 import { Category } from "./base/categories"
 import { withCategory } from "./base/registry"
 
@@ -59,5 +61,35 @@ withCategory(Category.PLAYER, ({ hack, toggle }) => {
         const floor = await InputTypes.integer("Please enter the floor you want to be on.", 1, 100)
         player.data.tower = floor
         success(`You are now on floor ${floor}.`)
+    })
+    hack("Change Name", "Changes the name of your player.", async (hack, player, gameData) => {
+        const names = gameData.name
+
+        const [firstName, setFirstName] = useState<number>(player.name.data.firstName)
+        const [middleName, setMiddleName] = useState<number>(player.name.data.middleName)
+        const [lastName, setLastName] = useState<number>(player.name.data.lastName)
+
+        const name = await customMessage({
+            title: "Set Player Name",
+            html: <div>
+                <select className="swal2-select flex mx-0 !w-full" onChange={event => { setFirstName(parseInt(event.currentTarget.value)) }} defaultValue={firstName.toString()}>
+                    <option disabled>First Name...</option>
+                    {names.filter(e => e.data.type === 0).map(n => <option value={n.ID} key={n.ID}>{n.name}</option>)}
+                </select>
+                <select className="swal2-select flex mx-0 !w-full" onChange={event => { setMiddleName(parseInt(event.currentTarget.value)) }} defaultValue={middleName.toString()}>
+                    <option disabled>Middle Name...</option>
+                    {names.filter(e => e.data.type === 1).map(n => <option value={n.ID} key={n.ID}>{n.name}</option>)}
+                </select>
+                <select className="swal2-select flex mx-0 !w-full" onChange={event => { setLastName(parseInt(event.currentTarget.value)) }} defaultValue={lastName.toString()}>
+                    <option disabled>Last Name...</option>
+                    {names.filter(e => e.data.type === 2).map(n => <option value={n.ID} key={n.ID}>{n.name}</option>)}
+                </select>
+                {/* <select className="swal2-select flex mx-0 !w-full">
+
+                </select> */}
+            </div>,
+            showCancelButton: true
+        })
+        if (name.dismiss) throw new ArgumentFailureError()
     })
 })

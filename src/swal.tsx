@@ -79,7 +79,7 @@ export const customMessage = (options: SweetAlertOptions) => {
     if (isJSX) {
         const element = document.createElement("div")
         render(options.html, element)
-        options.html = element.outerHTML
+        options.html = element
     }
     return Swal.fire(options)
 }
