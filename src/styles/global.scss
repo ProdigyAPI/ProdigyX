@@ -179,13 +179,16 @@
             transparent 70%);
 }
 
-.swal2-input,
-.swal2-select {
+.swal2-input {
     width: auto !important;
 
     &[type=number] {
         max-width: initial !important;
     }
+}
+
+.swal2-select {
+    width: auto;
 }
 
 .forest * {
