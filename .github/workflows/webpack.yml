@@ -24,11 +24,12 @@ jobs:
       run: |
         npm ci
         npm run build
+        npm run build-extension
     - name: Commit files
       run: |
         git config --global user.email "41898282+github-actions[bot]@users.noreply.github.com"
         git config --global user.name "github-actions[bot]"
-        git add dist/bundle.js
+        git add .
         git commit --allow-empty -m "Build files"
     - name: Push changes
       uses: ad-m/github-push-action@master

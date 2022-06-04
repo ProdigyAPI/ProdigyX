@@ -4,7 +4,7 @@ const webpack = require("webpack")
 const TerserPlugin = require("terser-webpack-plugin")
 
 const outputFolder = path.resolve(__dirname, "dist")
-const outputFile = "bundle.js"
+const outputFile = "extension-bundle.js"
 
 module.exports = {
     mode: "production",
@@ -19,7 +19,7 @@ module.exports = {
     plugins: [
         new webpack.ProgressPlugin(),
         new webpack.DefinePlugin({
-            "process.env.EXTENSION": false
+            "process.env.EXTENSION": true
         })
     ],
     module: {

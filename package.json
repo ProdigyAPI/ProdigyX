@@ -5,8 +5,10 @@
     "source": "src/index.ts",
     "main": "dist/index.js",
     "scripts": {
-        "dev": "webpack --watch",
-        "build": "webpack"
+        "dev": "webpack --watch --config webpack.config.js",
+        "dev-extension": "webpack --watch --config extension-webpack.config.js",
+        "build": "webpack --config webpack.config.js",
+        "build-extension": "webpack --config extension-webpack.config.js"
     },
     "files": [
         "dist"
