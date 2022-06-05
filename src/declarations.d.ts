@@ -12,6 +12,7 @@ declare global {
         category: Category
         getDefaultValue?: (hack: any, player: any, gameData: any) => boolean // for toggle hacks
     }
+    const _: any
 }
 
 declare module "*.scss"

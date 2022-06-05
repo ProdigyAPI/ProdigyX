@@ -1,7 +1,7 @@
 import { h, render } from "preact"
 import HackMenu from "./components/HackMenu"
 import { PRODIGY_X_CHEAT_MENU_ID } from "./constants"
-import { getHack, getPlayer } from "./hack"
+import { getPlayer, getWorld } from "./hack"
 import "tw-elements/dist/src/js/mdb/ripple.js"
 import "sweetalert2/src/sweetalert2.scss"
 import "./styles/global.scss"
@@ -17,7 +17,7 @@ document.getElementById("game-wrapper")?.prepend(menuElement)
 
 const interval = setInterval(() => {
     try {
-        if (getPlayer()) {
+        if (process.env.EXTENSION ? _.player : getPlayer()) {
             render(<HackMenu hacks={hackRegistry} />, menuElement)
             clearInterval(interval)
         }
@@ -26,8 +26,7 @@ const interval = setInterval(() => {
 
 setInterval(() => {
     try {
-        const hack = getHack() as any
-        const currentZone = hack?._state?._current?._world?.currentMap
+        const currentZone = process.env.EXTENSION ? _?.instance?.prodigy?.world?.currentMap : getWorld()?.currentMap
         if (currentZone) {
             menuElement.className = currentZone.split("-")[0].toLowerCase().replaceAll("_", "-")
         }

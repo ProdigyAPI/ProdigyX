@@ -10,9 +10,9 @@ interface HackProps {
 
 const Hack: FunctionalComponent<HackProps> = ({ name, description, hackFunction }) => {
     async function onClick () {
-        const hack = getHack() as any
-        const player = getPlayer() as any
-        const gameData = getGameData() as any
+        const hack = process.env.EXTENSION ? _.game : getHack() as any
+        const player = process.env.EXTENSION ? _.player : getPlayer() as any
+        const gameData = process.env.EXTENSION ? _.gameData : getGameData() as any
         if (hack) {
             try {
                 await hackFunction(hack, player, gameData)
@@ -22,7 +22,7 @@ const Hack: FunctionalComponent<HackProps> = ({ name, description, hackFunction 
             }
             setTimeout(() => {
                 player.appearanceChanged = true
-                saveGame()
+                saveGame() // TODO: If on extension, use _ method.
             }, 1000)
         }
     }

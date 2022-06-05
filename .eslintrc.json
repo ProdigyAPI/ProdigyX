@@ -28,7 +28,8 @@
     "globals": {
         "HackFunction": true,
         "ToggleFunction": true,
-        "HackData": true
+        "HackData": true,
+        "_": true
     },
     "rules": {
         "indent": [

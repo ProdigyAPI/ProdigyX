@@ -15,9 +15,9 @@ const Toggle: FunctionalComponent<ToggleProps> = ({ name, toggleFunction, checke
     async function onChange () {
         const newToggled = !toggled
         setToggled(newToggled)
-        const hack = getHack() as any
-        const player = getPlayer() as any
-        const gameData = getGameData() as any
+        const hack = process.env.EXTENSION ? _.game : getHack() as any
+        const player = process.env.EXTENSION ? _.player : getPlayer() as any
+        const gameData = process.env.EXTENSION ? _.gameData : getGameData() as any
         if (hack) {
             try {
                 await toggleFunction(hack, player, gameData, newToggled)
@@ -27,7 +27,7 @@ const Toggle: FunctionalComponent<ToggleProps> = ({ name, toggleFunction, checke
             }
             setTimeout(() => {
                 player.appearanceChanged = true
-                saveGame()
+                saveGame() // TODO: If on extension, use _ method.
             }, 1000)
         }
     }

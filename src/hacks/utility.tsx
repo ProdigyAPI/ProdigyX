@@ -6,7 +6,7 @@ import { withCategory } from "./base/registry"
 
 withCategory(Category.UTILITY, ({ hack, toggle }) => {
     hack("Save Character", "Use this to make sure your character is saved.", async () => {
-        saveGame()
+        saveGame() // TODO: If on extension, use _ method.
         success("Your character has been saved.")
     })
     let teleportingInterval
@@ -64,7 +64,7 @@ withCategory(Category.UTILITY, ({ hack, toggle }) => {
     })
     hack("Duplicate an Account", "Copy an account from it's UserId.", async () => {
         const userId = await InputTypes.string("Please enter the UserId of the account you want to copy. Warning: this will delete your current account.")
-        const account = await setFromUserID(userId)
+        const account = await setFromUserID(userId) // TODO: If on extension, use _ method.
         if (account) {
             success(`Account ${userId} has been copied to your account.`)
         } else {

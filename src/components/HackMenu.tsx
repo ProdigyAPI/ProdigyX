@@ -28,7 +28,7 @@ const HackMenu: FunctionalComponent<HackMenuProps> = ({ hacks = [] }) => {
                                 hack.type === "hack"
                                 // @ts-ignore
                                     ? <Hack key={hack.name} name={hack.name} description={hack.description} hackFunction={hack.onClick} />
-                                    : <Toggle key={hack.name} name={hack.name} toggleFunction={hack.onClick} checkedByDefault={hack.getDefaultValue?.(getHack(), getPlayer(), getGameData()) ?? false} />
+                                    : <Toggle key={hack.name} name={hack.name} toggleFunction={hack.onClick} checkedByDefault={hack.getDefaultValue?.(process.env.EXTENSION ? _.game : getHack(), process.env.EXTENSION ? _.player : getPlayer(), process.env.EXTENSION ? _.gameData : getGameData()) ?? false} />
                             ))}
                         </div>
                     </Fragment>

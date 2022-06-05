@@ -19,7 +19,11 @@ withCategory(Category.BATTLE, ({ hack, toggle }) => {
             Object.fromEntries(hack.state.states).PVP.endPVP()
             success("You have successfully escaped from the PvP battle.")
         } else if (currentState === "CoOp") {
-            getWorld().$(player.data.zone)
+            if (process.env.EXTENSION) {
+                _.instance.prodigy.world.$(player.data.zone)
+            } else {
+                getWorld().$(player.data.zone)
+            }
             success("You have successfully escaped from the battle.")
         } else if (!["Battle", "SecureBattle"].includes(currentState)) {
             error("You are not in a battle.")

@@ -36,8 +36,8 @@ withCategory(Category.PLAYER, ({ hack, toggle }) => {
         player.data.bountyScore = value
         success(`You now have ${value} bounty points.`)
     })
-    toggle("Toggle Membership", (hack, player, _gameData, toggled) => {
-        getMembership(toggled)
+    toggle("Toggle Membership", (hack, player, gameData, toggled) => {
+        getMembership(toggled) // TODO: If on extension, use _ method.
         success(`You are ${toggled ? "now a member" : "no longer a member"}.`)
     }, (hack, player) => player.hasMembership())
     hack("Set Wins", "Set's the amount of wins you have currently.", async (hack, player) => {
