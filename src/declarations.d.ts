@@ -10,6 +10,7 @@ declare global {
         onClick: HackFunction | ToggleFunction
         type: "hack" | "toggle"
         category: Category
+        extensionOnly?: boolean
         getDefaultValue?: (hack: any, player: any, gameData: any) => boolean // for toggle hacks
     }
     const _: any
