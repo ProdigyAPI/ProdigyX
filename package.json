@@ -34,7 +34,7 @@
         "eslint-plugin-promise": "^6.0.0",
         "eslint-plugin-react": "^7.30.0",
         "glob": "^8.0.3",
-        "jest": "^28.1.0",
+        "jest": "^28.1.1",
         "postcss": "^8.4.14",
         "postcss-loader": "^7.0.0",
         "postcss-preset-env": "^7.7.1",
