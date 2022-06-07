@@ -22,7 +22,7 @@
     "devDependencies": {
         "@babel/eslint-parser": "^7.18.2",
         "@types/glob": "^7.2.0",
-        "@typescript-eslint/eslint-plugin": "^5.27.0",
+        "@typescript-eslint/eslint-plugin": "^5.27.1",
         "@typescript-eslint/parser": "^5.27.0",
         "autoprefixer": "^10.4.7",
         "css-loader": "^6.7.1",
